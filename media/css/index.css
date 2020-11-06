@@ -1,0 +1,1379 @@
+.landing{
+      width: 100%;
+      height: 670px;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+      -webkit-transition: left 600ms cubic-bezier(0.47, 0, 0.745, 0.715);
+      transition:         left 600ms cubic-bezier(0.47, 0, 0.745, 0.715);
+}
+.landing_image_container{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+}
+.landing_image_container img{
+  max-width: 100%;
+}
+.indexBody{
+  width: 100%;
+  height: 100%;
+}
+.bodySection{
+  width: 100%;
+  min-height: 670px;
+  float: left;
+  display: none;
+}
+.artists{
+  width: 100%;
+  height: 670px;
+  position: relative;
+  z-index: 1;
+  display: block;
+  overflow: hidden;
+}
+
+@-webkit-keyframes ani-mouse {
+	0% {
+	opacity: 1;
+	top: 29%;
+	}
+	15% {
+	opacity: 1;
+	top: 50%;
+	}
+	50% {
+	opacity: 0;
+	top: 50%;
+	}
+	100% {
+	opacity: 0;
+	top: 29%;
+	}
+}
+@-moz-keyframes ani-mouse {
+	0% {
+	opacity: 1;
+	top: 29%;
+	}
+	15% {
+	opacity: 1;
+	top: 50%;
+	}
+	50% {
+	opacity: 0;
+	top: 50%;
+	}
+	100% {
+	opacity: 0;
+	top: 29%;
+	}
+}
+@keyframes ani-mouse {
+	0% {
+	opacity: 1;
+	top: 29%;
+	}
+	15% {
+	opacity: 1;
+	top: 50%;
+	}
+	50% {
+	opacity: 0;
+	top: 50%;
+	}
+	100% {
+	opacity: 0;
+	top: 29%;
+	}
+}
+ .scroll-btn {
+    width: 54px;
+     height: 168px;
+     margin: auto;
+     display: block;
+     position: absolute;
+     /* left: 0; */
+     right: 0;
+     top: 50%;
+     /* bottom: 0; */
+     z-index: 5;
+     text-align: center;
+}
+.scroll-btn > * {
+  display: inline-block;
+line-height: 18px;
+font-size: 13px;
+margin: 0 auto;
+font-weight: normal;
+color: #7f8c8d;
+color: #ffffff;
+font-family: 'bebas';
+font-size: 1.5em;
+line-height: 1.3em;
+font-weight: bold;
+}
+.scroll-btn > *:hover,
+.scroll-btn > *:focus,
+.scroll-btn > *.active {
+	color: #ffffff;
+}
+.scroll-btn > *:hover,
+.scroll-btn > *:focus,
+.scroll-btn > *:active,
+.scroll-btn > *.active {
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+}
+.scroll-btn .mouse {
+	position: relative;
+	display: block;
+	width: 35px;
+	height: 55px;
+	margin: 0 auto 20px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	border: 3px solid white;
+	border-radius: 23px;
+}
+.scroll-btn .mouse > * {
+	position: absolute;
+	display: block;
+	top: 29%;
+	left: 50%;
+	width: 8px;
+	height: 8px;
+	margin: -4px 0 0 -4px;
+	background: white;
+	border-radius: 50%;
+	-webkit-animation: ani-mouse 2.5s linear infinite;
+	-moz-animation: ani-mouse 2.5s linear infinite;
+	animation: ani-mouse 2.5s linear infinite;
+}
+.scroll p{
+  font-family: 'bebas';
+}
+.artistsHome{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  }
+  .artists{
+    position: absolute;
+    right:-100%;
+    z-index: 2;
+    -webkit-transition: all 600ms cubic-bezier(0.47, 0, 0.745, 0.715);
+    transition:         all 600ms cubic-bezier(0.47, 0, 0.745, 0.715);
+    background: black;
+  }
+.inner{
+  width: 100%;
+  overflow: hidden;
+  height:100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+
+.midImage{
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+}
+.midImage img{
+  max-width: 100%;
+}
+
+.landin_image{
+  transition: all 10000ms;
+}
+.welcome{
+      position: absolute;
+      z-index: 2;
+      width: 40%;
+      height: 220px;
+      margin: auto;
+      line-height: 3.5em;
+      top: 50%;
+      /* bottom: 0; */
+      right: 0;
+      left: 0;
+}
+.welcome h2{
+  display: block;
+  width: 100%;
+  height: 135px;
+  font-family: 'lovelo';
+  font-size: 2em;
+  color: #fff;
+  text-align: center;
+  line-height: 2em;
+}
+.learn_more{
+  display: block;
+  width: 44%;
+  height: 55px;
+  text-align: center;
+  color: white;
+  /* background: white; */
+  border: 2px solid white;
+  margin: auto;
+  font-family: 'lovelo';
+  line-height: 59px;
+  font-size: 1.1em;
+  -webkit-transition: all 400ms cubic-bezier(0.215, 0.61, 0.355, 1);
+transition:         all 400ms cubic-bezier(0.215, 0.61, 0.355, 1);
+margin-top: 20px;
+}
+.learn_more:hover{
+  background:white;
+  color: black;
+}
+.artistLeft{
+  width: 30%;
+    height: 80%;
+    margin-top: 125px;
+    position: relative;
+    float: left;
+    margin-left: 5%;
+}
+.artistImage{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.artistImage img{
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  height: 100%;
+}
+.artistHover{
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.83);
+  transform: scale(1.5);
+  display: block;
+  -webkit-transition: all 500ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition:         all 500ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  z-index: 4;
+  opacity: 0;
+}
+.artistMid{
+      width: 30%;
+      height: 91%;
+      margin-top: 50px;
+      position: relative;
+      float: left;
+      margin-left: 3%;
+}
+.artistMid .artistImage img{
+  top: -9999px;
+    bottom: -9999px;
+    left: -9999px;
+    right: -9999px;
+    margin: auto;
+}
+.artistRight{
+  float: right;
+  width: 30%;
+    height: 80%;
+    margin-top: 125px;
+    position: relative;
+    float: left;
+}
+.artistFrames{
+  width: 29%;
+  margin-left: 3%;
+  overflow: hidden;
+}
+.artistHoverRows{
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  margin-top: 40px;
+  color: #fff;
+  font-family: 'lovelo';
+}
+.artistInfo{
+  width: 100%;
+  height: 320px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+}
+.artistName{
+  font-size: 3em;
+}
+.artistHoverName{
+  height: 235px;
+}
+.artistHoverRows h1,.artistHoverRows h2,.artistHoverRows h3,.artistHoverRows h4,.artistHoverRows h5{
+      display: block;
+      width: 90%;
+      margin: auto;
+      height: 100%;
+      overflow: hidden;
+      word-wrap: break-word;
+      text-overflow: ellipsis;
+}
+.artistLeft{
+  transition: all 400ms;
+}
+.artistRight{
+  transition: all 400ms;
+}
+.artistMid{
+  transition: all 600ms;
+}
+.artistListeners{
+        font-size: 1.4em;
+}
+.formContainer{
+  width: 80%;
+  height: 990px;
+  margin: 0 auto;
+}
+.formContainer form{
+  width: 80%;
+  margin-top: 150px;
+  margin: auto;
+  overflow: hidden;
+  font-family: 'bebas';
+  font-weight: bold;
+  font-size: 2em;
+}
+.form-row{
+  width: 100%;
+min-height: 220px;
+float: left;
+margin: 20px 0;
+position: relative;
+z-index: 10;
+}
+.right{
+  float: right !important;
+}
+.form-row-half{
+  width: 45%;
+  float: left;
+}
+.form-row>label{
+  display: block;
+  text-align: center;
+  width: 100%;
+  height: 80px;
+  font-size: 1.5em;
+  float: left;
+  clear: both;
+  color: white;
+}
+.form-row>input{
+      font-family: 'bebas';
+      font-weight: bold;
+      font-size: 2em;
+      float: left;
+      clear: both;
+      width: 100%;
+      height: 80px;
+      background: #0c0c0c;
+      font-size: 1em;
+      padding: 18px;
+      color: #c1c1c1;
+      border: 1px solid #1d1d1d;
+}
+#browseFile{
+}
+.form-row>input[type=file] button{
+  background: red;
+}
+#chooseFileBtn{
+  display: block;
+    width: 22%;
+    height: 100%;
+    line-height: 80px;
+    font-size: 1em;
+    border: 1px solid #212121;
+    float: left;
+    -webkit-transition: all 400ms cubic-bezier(0.215, 0.61, 0.355, 1);
+    transition:         all 400ms cubic-bezier(0.215, 0.61, 0.355, 1);
+    color: #c1c1c1;
+    cursor: pointer;
+
+}
+#chooseFileBtn:hover{
+  background : #212121;
+  color:#fff;
+
+}
+.btn {
+    font-family: 'dense';
+
+    font-size: 1.6em;
+    float: left;
+    clear: both;
+    width: 100%;
+    height: 80px;
+    background: #0c0c0c;
+    /* font-size: 1em; */
+    /* padding: 18px; */
+    color: #c1c1c1;
+    border: 1px solid #1d1d1d;
+    -webkit-transition: all 400ms cubic-bezier(0.215, 0.61, 0.355, 1);
+    transition: all 400ms cubic-bezier(0.215, 0.61, 0.355, 1);
+    cursor: pointer;}
+.btn:hover{
+  background : #212121;
+  color:#fff;
+
+}
+.chooseFileContainer{
+  font-family: 'bebas';
+  font-weight: bold;
+  font-size: 2em;
+  float: left;
+  clear: both;
+  width: 100%;
+  height: 80px;
+  background: #0c0c0c;
+  font-size: 1em;
+  color: #c1c1c1;
+  border: 1px solid #1d1d1d;
+}
+.artistAjax,.albumAjax{
+      font-family: 'dense';
+      float: left;
+      clear: both;
+      width: 94%;
+      margin: 0 auto;
+      padding-top: 18px;
+      color: #fff;
+      display: none;
+      text-transform: capitalize;
+
+
+}
+
+.artistTableName{
+  width: 25%;
+  float: left;
+}
+.artistTable tbody{
+  min-height: 150px;
+  width: 100%;
+}
+.artistRow{
+  width: 22%;
+  /* margin-right: 10%; */
+  min-height: 30px;
+  float: left;
+  padding: 10px;
+  overflow: hidden;
+}
+.artistLabel{
+  width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+      font-size: 1em  !important;
+      float: left  !important;
+      text-align: left  !important;font-size: 1em !important;
+      padding-right: 10px;
+}
+.artistRow input{
+  margin-top: 3px;
+  min-width: 20px !important;
+  min-height: 20px !important;
+  float: right !important
+}
+.ajaxBTNS{
+  display: block;
+  text-align: center;
+  width: 100%;
+  height: 80px;
+  font-size: 1em;
+  float: left;
+  clear: both;
+  color: white;
+  -webkit-transition: all 400ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: all 400ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.ajaxBTNS:hover{
+  color:#848484;
+}
+.albumEditForms
+{
+  font-family: 'bebas';
+      font-weight: bold;
+      font-size: 2em;
+      float: left;
+      clear: both;
+      width: 100%;
+      height: 80px;
+      background: #0c0c0c;
+      font-size: 1em;
+      padding: 18px;
+      color: #c1c1c1;
+      border: 1px solid #1d1d1d;
+}
+.albumRow{
+      width: 20%;
+      margin-right: 10%;
+      height: 50px;
+      overflow: hidden;
+      /* min-height: 60px; */
+      float: left;
+      padding: 10px;
+}
+.albumLabel{
+  float: left;
+}
+.album_input_price{
+  width: 60%;
+      float: right;
+      margin-left: 3%;
+      clear: none;
+      height: 40px;
+      text-align: center;
+      /* text-indent: 0.2em; */
+      font-size: 0.9em;
+}
+.indexArtist{
+  display: block;
+width: 100%;
+height: 100%;
+position: absolute;
+top: 0;
+left: 0;
+z-index: 10;
+}
+.bodyContainer{
+  width: 100%;
+  overflow: hidden;
+}
+.bodyBackground{
+    width:100%;
+    height: 100%;
+    margin:auto;
+    z-index: 1;
+    position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+}
+.bgOverlay{
+  width:100%;
+  height: 100%;
+  margin:auto;
+  z-index: 1;
+  position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background: rgba(0,0,0,0.5);
+}
+.bodyBackground img{
+  max-width: 100%;
+  margin:auto;
+  z-index: 1;
+  position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+.bodyContent{
+    width:100%;
+    min-height: 662px;
+    float: left;
+    position: relative;
+    z-index:90;
+    }
+.alertContainer{
+      width: 50%;
+      min-height: 40px;
+      margin: 0 auto;
+      background: rgba(0,0,0,0.5);
+      padding: 1%;
+}
+#userLogin{
+
+    overflow: hidden;
+    margin: 0 auto;
+}
+#registerForm{
+  height: 900px;
+  margin: 0 auto;
+}
+.form-group{
+      width: 100%;
+      overflow: hidden;
+      color: white;
+      font-family: 'dense';
+      font-size: 1em;
+}
+.form-group label{
+  font-size: 2em;
+}
+.form-control{
+    width: 100%;
+      height: 50px;
+      background-color: rgb(14, 14, 14);
+      border: 1px solid #3e3e3e;
+      transition: border 300ms;
+      color: white;
+      font-family: 'dense';
+      font-size: 1.5em;
+      text-indent: 0.5em;
+      margin-top: 20px;
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #0c0c0c  inset;
+    -webkit-text-fill-color: #e8e8e8  !important;
+}
+.password{
+  font-size: 3em;
+text-indent: 0.25em;
+}
+#userLogin button{
+  margin-top:20px;
+  font-size: 2em;
+}
+#registerForm button{
+  margin-top:20px;
+  font-size: 2em;
+}
+#adminLogin button{
+  margin-top:20px;
+  font-size: 2em;
+}
+
+.alert{
+  font-size: 1.8em;
+  font-family: 'dense';
+  /* letter-spacing: 0.2em; */
+  width: 100%;
+  height: 40px;
+}
+.alert-danger{
+  color: red;
+}
+.alert-success{
+  color: lime;
+}
+.artist-image-upload{
+  float: left;
+clear: both;
+width: 100%;
+font-family: 'bebas';
+font-size: 1.5em;
+margin-top: 20px;
+letter-spacing: 0.1em;
+font-weight: bold;
+}
+.forms{
+    width:50%;
+    margin:auto;
+    overflow: hidden;
+    padding:1%;
+    background: rgba(0,0,0,.5);
+    position: relative;
+    z-index: 2;
+}
+.fileUp{
+  text-indent:0;
+}
+.parsley-errors-list{
+  margin-top: -14%;
+      /* margin-left: 14%; */
+      float: right;
+      list-style-type: none;
+      color: #ffffff;
+      text-shadow: 0px 0px 14px rgba(255, 0, 0, 1);
+      font-size: 1.4em;
+}
+.artistAdd{
+  background: url('/media/img/artistAdd.jpg');
+}
+.oops{
+  min-height: 300px;
+  padding: 2%;
+  background: rgba(0,0,0,0.5);
+  width: 90%;
+  margin: auto;
+  font-family: 'dense';
+  color: rgb(255, 255, 255);
+  /* font-size: 3em; */
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
+.oops h2{
+  width: 100%;
+    float: left;
+    overflow: hidden;
+    height: 50px;
+    font-size: 2em;
+}
+.oops p{
+  width: 95%;
+    margin: 0;
+    font-size: 2em;
+    text-align: left;
+    overflow: hidden;
+}
+.artistDetails{
+  width:90%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
+}
+.artist_details_name h2{
+      color: white;
+      font-family: 'dense';
+      font-size: 5em;
+      text-transform: capitalize;
+}
+.artist_details_nameAndDesc{
+  width:48%;
+  float: left;
+  min-height: 400px;
+  overflow: hidden;
+}
+.artist_details_info p{
+  color: white;
+    font-family: 'dense';
+    font-size: 2em;
+}
+.artist_detial_left{
+  width:40%;
+  float:left;
+}
+.artist_details_albums{
+  width:49%;
+  float: right;
+  min-height: 400px;
+  overflow: hidden;
+}
+.artist_details_name{
+  width:100%;
+  float:left;
+}
+.details_boxes{
+  width:40%;
+  height: 40%;
+  border: 3px solid white;
+  float: left;
+  margin-bottom: 10%;
+  position: relative;
+  z-index: 5;
+  transition: all 400ms;
+}
+.details_boxes a{
+  display: block;
+      width: 100%;
+      height: 100%;
+      font-family: 'dense';
+      font-size: 4.5em;
+      color: white;
+      line-height: 166px;
+      text-align: center;
+      transition: all 400ms;
+
+}
+.details_boxes a:hover{
+  color: black;
+  background: rgba(255,255,255,0.8);
+}
+.detials_songs{
+  margin-left: 10%;
+}
+.detials_events{
+  margin-left: 10%;
+}
+.artist_details_ops{
+  width:83%;
+  height: 400px;
+  position: relative;
+  float: left;
+  clear: left;
+  margin-top: 30px;
+}
+.eye{
+      opacity: 0;
+      margin: auto;
+      position: absolute;
+      width: 20%;
+      height: 20%;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      text-align: center;
+      z-index: 3;
+      transition: all 400ms;
+      border: 3px solid white;
+}
+.eye a:hover{
+  color: black;
+  background: rgba(255,255,255,0.8);
+}
+.eye a{
+  display: block;
+  width: 100%;
+  height: 100%;
+  line-height: 86px;
+  font-size: 3.5em;
+  color: white;
+  transition: all 400ms;
+  cursor: pointer;
+}
+.artist_details_body{
+  float: left;
+  width: 55%;
+  color: white;
+  margin-top: 120px;
+  font-family: 'dense';
+  font-size: 2em;
+  height:372px;
+  position: relative;
+  overflow: auto;
+}
+.artist_detail_info{
+  width:100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  opacity: 0;
+  margin-left: -5%;
+  transition: all 400ms;
+  position: relative;
+  z-index: 5;
+  float: left;
+}
+.artist_details_body p{
+  padding:3%;
+}
+.artist_detail_info{
+  display: none;
+  transition: all 500ms;
+  opacity: 0;
+  margin-left: -5%;
+}
+.artist_detail_albums{
+  width:100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  opacity: 0;
+  margin-top: -5%;
+  transition: all 400ms;
+  position: relative;
+  z-index: 5;
+  float: left;
+}
+.artist_detail_songs{
+  width:100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  opacity: 0;
+  margin-right: -5%;
+  transition: all 400ms;
+  position: relative;
+  z-index: 5;
+  float: left;
+  padding-bottom: 35px;
+}
+.albumBox{
+      width: 200;
+      height: 200px;
+      overflow: hidden;
+      float: left;
+      margin-right: 4%;
+      position: relative;
+      z-index: 2;
+      width: 200;
+      height: 200px;
+      overflow: hidden;
+      float: left;
+      margin: 4% 1% 4% 1%;
+      position: relative;
+      z-index: 2;
+      cursor: pointer;
+
+}
+.albumBox img{
+  width: 100%;
+  max-height: 100%;
+}
+.album_name_hover{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  opacity: 0;
+  transition: all 400ms;
+  position: absolute;
+  z-index: 4;
+  top:0;
+  left:0;
+  background: rgba(0, 0, 0,0.5);
+}
+.album_name_span{
+  display: block;
+max-width: 90%;
+margin: 0 auto;
+/* max-height: 110px; */
+display: block;
+height: 76px;
+margin-top: 60px;
+overflow: hidden;
+/* white-space: nowrap; */
+text-overflow: ellipsis;
+}
+.audiojs audio { position: absolute; left: -1px; }
+.audiojs{
+
+}
+.audiojs {
+    width: 100%;
+    height: 36px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.audiojs .play-pause {
+  width: 36px;
+  height: 36px;
+  /* padding: 4px 6px; */
+  margin: 0px;
+  float: left;
+  overflow: hidden;
+  /* border-right: 1px solid #000; */
+  text-align: center;
+  /* line-height: 40px; */
+}
+
+.audiojs p {
+    display: none;
+    margin: 0px;
+    cursor: pointer;
+}
+
+.audiojs .play {
+    display: block;
+    font-size: 0.5em;
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 34px;
+}
+
+.audiojs .scrubber {
+      position: relative;
+      float: left;
+      width: 70%;
+      height: 10px;
+      margin: 10px;
+      border: 1px solid #565656;
+      overflow: hidden;
+}
+
+.audiojs .progress {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      height: 14px;
+      width: 0px;
+      background: rgba(255, 255, 255, 0.66);
+      z-index: 1;
+}
+
+.audiojs .loaded {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 14px;
+    width: 0px;
+    background: rgba(255, 255, 255, 0.44);
+}
+
+.audiojs .time {
+    float: left;
+    height: 36px;
+    line-height: 36px;
+    margin: 0px 0px 0px 6px;
+    padding: 0px 6px 0px 12px;
+    color: #ddd;
+}
+
+.audiojs .time em {
+    padding: 0px 2px 0px 0px;
+    color: #f9f9f9;
+    font-style: normal;
+}
+
+.audiojs .time strong {
+    padding: 0px 0px 0px 2px;
+    font-weight: normal;
+}
+
+.audiojs .error-message {
+    float: left;
+    display: none;
+    margin: 0px 10px;
+    height: 36px;
+    width: 100%;
+    overflow: hidden;
+    line-height: 36px;
+    white-space: nowrap;
+    color: #fff;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -icab-text-overflow: ellipsis;
+    -khtml-text-overflow: ellipsis;
+    -moz-text-overflow: ellipsis;
+    -webkit-text-overflow: ellipsis;
+}
+
+.audiojs .error-message a {
+    color: #eee;
+    text-decoration: none;
+    padding-bottom: 1px;
+    border-bottom: 1px solid #999;
+    white-space: wrap;
+}
+
+.audiojs .play {
+  font-size: 0.5em;
+}
+
+.audiojs .loading {
+
+}
+
+.audiojs .error {
+
+}
+
+.audiojs .pause {
+  font-size: 0.5em;
+  display: block;
+  width: 100%;
+  height: 100%;
+  line-height: 34px;
+}
+
+.playing .play,
+.playing .loading,
+.playing .error {
+    display: none;
+}
+
+.playing .pause {
+    display: block;
+}
+
+.loading .play,
+.loading .pause,
+.loading .error {
+    display: none;
+}
+
+.loading .loading {
+    display: block;
+}
+
+.error .time,
+.error .play,
+.error .pause,
+.error .scrubber,
+.error .loading {
+    display: none;
+}
+
+.error .error {
+    display: block;
+}
+
+.error .play-pause p {
+    cursor: auto;
+}
+
+.error .error-message {
+    display: block;
+}
+ol {
+  padding: 0px;
+  margin: 0px;
+  display: block;
+  width: 90%;
+  /* margin-left: 8%; */
+  float: left;
+  /* overflow: hidden; */
+  font-size: 0.9em;
+  display: block;
+  margin-left: 5%;
+  list-style-type: none;
+  margin-top: 15px;
+}
+li.playing:before {
+  content: '♬';
+      width: 14px;
+      height: 16px;
+      /* padding: 3px; */
+      /* line-height: 14px; */
+      margin: 0px;
+      position: absolute;
+      left: 12px;
+      top: 23px;
+      color: #fff;
+      font-size: 0.8em;
+      /* text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2); */
+}
+ol li {
+  position: relative;
+  margin: 0px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+  height: 70px;
+  transition: all 400ms;
+
+}
+ol li:hover{
+  background: rgba(255,255,255,0.3);
+}
+
+ol li>a {
+  display: block;
+    width: 71%;
+    height: 100%;
+    line-height: 70px;
+    /* text-indent: -3.3ex; */
+    padding: 0px 0px 0px 40px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    z-index: 4;
+}
+.navRight::before{
+  width: 50px;
+  height: 50px;
+}
+.bsContainer{
+  width: 30px;
+  height: 30px;
+  margin: auto;
+  right: 20px;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+
+  z-index: 12;
+}
+.basket{
+color: white;
+  transition: all 400ms;
+}
+.download{
+  color: white;
+    transition: all 400ms;
+}
+.dlContainer{
+  width: 30px;
+  height: 30px;
+  margin: auto;
+  right: 80px;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  transition: all 400ms;
+  z-index: 12;
+}
+.basket:hover{
+color: black;
+}
+.download:hover{
+  color: black;
+}
+li.playing {
+    background: rgba(255,255,255,0.5);
+}
+
+li.playing>a {
+    color: #fff;
+}
+#shortcuts {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    color: #666;
+    font-size: 0.9em;
+    margin: 60px 0px 0px;
+    padding: 20px 20px 15px;
+    background: #f3f3f3;
+    background: rgba(240, 240, 240, 0.7);
+}
+
+#shortcuts div {
+    width: 460px;
+    margin: 0px auto;
+}
+
+#shortcuts h1 {
+    margin: 0px 0px 6px;
+}
+
+#shortcuts p {
+    margin: 0px 0px 18px;
+}
+
+#shortcuts em {
+    font-style: normal;
+    background: #d3d3d3;
+    padding: 3px 9px;
+    position: relative;
+    left: -3px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    -o-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-device-width: 480px) {
+    #wrapper {
+        position: relative;
+        left: -3%;
+    }
+    #shortcuts {
+        display: none;
+    }
+}
+.total{
+  width: 20%;
+height: 52px;
+float: right;
+text-align: right;
+/* margin: auto; */
+margin-right: 3%;
+color: white;
+font-family: 'dense';
+font-size: 5em;
+}
+#exp_month{
+  width: 40%;
+  float: left;
+}
+#exp_year{
+  width: 40%;
+  float: right;
+}
+.halfLable{
+  width: 100%;
+  float:left;
+  clear: both;
+}
+#charge-error{
+  width: 50%;
+margin: auto;
+font-family: 'dense';
+letter-spacing: 2px;
+background: rgba(0, 0, 0, 0.5);
+}
+.artistImageForm{
+  opacity: 0;
+  transition: all 400ms;
+}
+.selectAlbumLabel{
+  float:left;
+  width:100%;
+
+}
+.artistRow{
+  font-size:1.5em;
+}
+.songRow{
+  width: 100%;
+/* margin-right: 10%; */
+min-height: 40px;
+float: left;
+padding-top: 10px;
+  font-size:1.9em;
+}
+.songRow .songRadioBtns{
+      margin-top: 35px;
+      min-width: 20px !important;
+      min-height: 18px !important;
+      float: right !important;
+}
+.songPriceInput {
+  width: 10%;
+float: left;
+margin-left: 10%;
+text-indent: 0;
+text-align: center;
+
+}
+.inputContainer{
+  width:40%;
+}
+.songNameInput{
+  width: 40%;
+    font-size: 1em;
+    float: left;
+}
+.saveSong,.deleteSong{
+  width: 8%;
+      height: 48px;
+      background-color: rgb(14, 14, 14);
+      border: 1px solid #3e3e3e;
+      transition: border 300ms;
+      color: white;
+      font-family: 'dense';
+      font-size: 1em;
+      /* text-indent: 0.5em; */
+      margin-top: 20px;
+      float: left;
+      line-height: 48px;
+      color: white;
+      margin-left: 6%;
+      text-align: center;
+      overflow: hidden;
+}
+.saveSong a,.deleteSong a{
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+@media only screen and (min-width: 320px){
+    .logo{
+        width: 79%;
+    }
+    .welcome{
+        width: 55%;
+    }
+}
