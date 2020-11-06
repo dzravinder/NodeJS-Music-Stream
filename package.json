@@ -1,0 +1,40 @@
+{
+  "name": "course",
+  "version": "0.0.0",
+  "private": true,
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bbehrang/Bbmusic.git"
+  },
+  "dependencies": {
+    "aws-sdk": "*",
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "connect-flash": "*",
+    "connect-mongo": "*",
+    "cookie-parser": "*",
+    "cors": "^2.8.5",
+    "csurf": "*",
+    "debug": "*",
+    "ejs": "*",
+    "ejs-mate": "*",
+    "express": "*",
+    "express-session": "*",
+    "express-validator": "*",
+    "fs-extra": "*",
+    "mkdirp": "*",
+    "mongodb": "*",
+    "mongoose": "*",
+    "multer": "*",
+    "multer-s3": "*",
+    "passport": "*",
+    "passport-local": "*",
+    "s3fs": "*",
+    "serve-favicon": "*",
+    "stripe": "*"
+  }
+}

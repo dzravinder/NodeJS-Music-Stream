@@ -1,0 +1,276 @@
+<% layout('layout/layout') -%>
+<link rel="stylesheet" href="/media/css/perfect-scrollbar.min.css" />
+
+<style>
+
+</style>
+<script src="/media/js/jquery.scrollbar.min.js"></script>
+<script src="/media/js/audio.min.js"></script>
+<div class="bodyBackground">
+  <% if (artist.images.otherImgs.length > 0 ) { %>
+    <img src='<%=artist.images.otherImgs[0]%>' alt='<%=artist.name%>'>
+<%  } %>
+</div>
+  <div class="bgOverlay"></div>
+    <section class="bodyContent">
+      <div class="artistDetails">
+        <div class="artist_detial_left">
+          <div class="artist_details_name">
+            <h2><% if (artist.name.length >0 ) { %>
+              <%=artist.name%>
+          <%  } %></h2>
+          </div>
+          <div class="artist_details_ops">
+            <div class="eye">
+              <a class="icon-eye" href="#" title="Menu"></a>
+            </div>
+            <div class="details_boxes detials_info"><a href="#" title="Info">info</a></div>
+            <div class="details_boxes detials_events"><a href="#" title="events">gallary</a></div>
+            <div class="details_boxes detials_albums"><a href="#" title="albums">albums</a></div>
+            <div class="details_boxes detials_songs"><a href="#" title="songs">songs</a></div>
+          </div>
+        </div>
+        <div class="artist_details_body">
+          <div class="artist_detail_info">
+            <% if (artist.description.length>0 ) { %>
+              <p>
+                <%var desc = artist.description.trim()%>
+                <%=desc%>
+              </p>
+          <%  } %>
+
+          </div>
+          <div class="artist_detail_albums">
+          </div>
+          <div class="artist_detail_songs">
+          </div>
+
+        </div>
+      </div>
+    </section>
+  <script>
+  jQuery.fn.clickToggle = function(a,b) {
+  function cb(){ [b,a][this._tog^=1].call(this); }
+  return this.on("click", cb);
+  };
+  $(document).ready(function(){
+    $(".details_boxes").on("click",function(e){
+      e.preventDefault();
+      $(".details_boxes").css({"opacity":"0"});
+      $(".eye").css({"display":"block"});
+      setTimeout(function(){
+           $(".eye").css({"opacity":"1"});
+           $(".details_boxes").css({"display":"none"});
+         }, 400);
+    });
+    $(".eye a").on("click",function(e){
+      e.preventDefault();
+       $(".eye").css({"opacity":"0"});
+       $(".artist_detail_info").css({"opacity":"0","margin-left":"-15%"});
+       $(".artist_detail_albums").css({"opacity":"0","margin-top":"-15%"});
+       $(".artist_detail_songs").css({"opacity":"0","margin-right":"-15%"});
+       $(".details_boxes").css({"display":"block"});
+       $(".bgOverlay").css("background","rgba(0,0,0,0.5)");
+       setTimeout(function(){
+         $(".artist_detail_info").css({"display":"none"});
+         $(".artist_detail_albums").css({"display":"none"});
+         $(".artist_detail_songs").css({"display":"none"});
+            $(".details_boxes").css({"opacity":"1"});
+            $(".eye").css({"display":"none"});
+          }, 400);
+    });
+  //$(".artist_detail_info").scrollbar();
+
+    //$(".artist_detail_songs").scrollbar();
+
+
+    $(".detials_info").on("click",function(){
+      $(".artist_details_body").animate({scrollTop:0},{queue:false});
+      $(".artist_details_body").perfectScrollbar();
+      $(".artist_detail_info").css({"display":"block"});
+      setTimeout(function(){
+           $(".artist_detail_info").css({"opacity":"1","margin-left":"0"});
+         }, 100);
+    });
+    $(".detials_albums").on("click",function(){
+      var name = $(".artist_details_name h2").text().trim();
+      var artist = {name:name}
+      $.ajax({
+        url:'/artists/albums',
+        method:'POST',
+        data:artist,
+        success : function(response){
+          $(".artist_detail_albums").html("");
+          for(var i=0;i<response.albums.length;i++)
+          {
+            $(".artist_detail_albums").append('\
+            <div class="albumBox">\
+                <img src="'+response.albums[i].coverArt+'" alt="'+response.albums[i].name+'" />\
+                <div class="album_name_hover"><span class="album_name_span">'+
+                response.albums[i].name+
+                '</span></div>\
+            \</div>');
+          }
+        },
+        complete:function(){
+          $(".artist_detail_albums").css("display","block");
+          setTimeout(function(){
+               $(".artist_detail_albums").css({"opacity":"1","margin-top":"0"});
+             }, 100);
+             $(".albumBox").on("mouseenter",function(){
+               $(this).find(".album_name_hover").css("opacity","1");
+             });
+             $(".albumBox").on("mouseleave",function(){
+               $(this).find(".album_name_hover").css("opacity","0");
+             });
+             $(".artist_details_body").animate({scrollTop:0},{queue:false});
+
+               $(".artist_details_body").perfectScrollbar();
+           }
+      }).done(function(){
+      $(".albumBox").on("click",function(){
+        var artistName = $(".artist_details_name h2").text().trim();
+        var albumName = $(this).find(".album_name_span").text().trim();
+        var artist = {albumName:albumName,artistName:artistName}
+        $.ajax({
+          url:'/artists/albums/songs',
+          method:'POST',
+          data:artist,
+          success : function(response){
+            var frame = $(".artist_detail_songs");
+            frame.html("");
+            frame.append('<div class="audiojs   " classname="audiojs" id="audiojs_wrapper0"><audio preload="" src="'+response.albums.songs[0].songPath+'"></audio>          <div class="play-pause">             <p class="play"></p>             <p class="pause"></p>             <p class="loading"></p>             <p class="error"></p>           </div>           <div class="scrubber">             <div class="progress" style="width: 1.50639px;"></div>             <div class="loaded" style="width: 265.651px;"></div>           </div>           <div class="time">             <em class="played">00:01</em>/<strong class="duration">04:33</strong>           </div>           <div class="error-message"></div></div>');
+            var frameOl = frame.append("<ol class='ols'></ol>");
+            for(var i=0;i<response.albums.songs.length;i++)
+            {
+              $(".ols").append('<li><a class="songP" href="#" data-id="'+response.albums.songs[i]._id+'" data-src="'+response.albums.songs[i].songPath+'">'+response.albums.songs[i].name+'</a><div class="bsContainer"><a href="#" class="basket icon-buy"></span></div><div class="dlContainer"><a href="'+response.albums.songs[0].songPath +'" class="download icon-download" target="_blank" download></a></div></li>')
+            }
+          },
+          complete:function()
+          {
+            $(".artist_detail_albums").css({"opacity":"0","margin-top":"-15%"});
+            setTimeout(function(){
+              $(".artist_detail_albums").css({"display":"none"});
+            }, 100);
+            $(".artist_details_body").animate({scrollTop:0},{queue:false});
+            $(".artist_details_body").perfectScrollbar();
+
+              $(".artist_detail_songs").css("display","block");
+              setTimeout(function(){
+                   $(".artist_detail_songs").css({"opacity":"1","margin-right":"0"});
+                 }, 100);
+                 // Setup the player to autoplay the next track
+                // $(".audiojs")
+             var a = audiojs.createAll({
+               trackEnded: function() {
+                 var next = $('ol li.playing').next();
+                 if (!next.length) next = $('ol li').first();
+                 next.addClass('playing').siblings().removeClass('playing');
+                 audio.load($('a', next).attr('data-src'));
+                 audio.play();
+               }
+             });
+
+             // Load in the first track
+             var audio = a[0];
+                 first = $('ol a').attr('data-src');
+             $('ol li').first().addClass('playing');
+             audio.load(first);
+
+             // Load in a track on click
+             $('ol li').click(function(e) {
+
+               $(this).addClass('playing').siblings().removeClass('playing');
+               audio.load($('a', this).attr('data-src'));
+               audio.play();
+             });
+
+          }
+      }).done(function(){
+        $(".basket").on("click",function(e){
+          e.preventDefault();
+          var id = $(this).parent(".bsContainer").siblings(".songP").attr('data-id');
+          console.log(id);
+          var song = {id:id}
+          $.ajax({
+            url:'/cart/add/'+id,
+            method:'GET',
+            data:song,
+            success:function(response)
+            {
+              console.log(response);
+            }
+
+          });
+        });
+      });
+      });
+
+      });
+    });
+    $(".detials_songs").on("click",function(e){
+      e.preventDefault();
+      var name = $(".artist_details_name h2").text().trim();
+      var artist = {name:name}
+      $.ajax({
+        url:'/artists/songs',
+        method:'POST',
+        data:artist,
+        success : function(response){
+          var frame = $(".artist_detail_songs");
+          frame.html("");
+          frame.append('<div class="audiojs   " classname="audiojs" id="audiojs_wrapper0"><audio preload="" src="'+response.songs[0].songPath+'"></audio>          <div class="play-pause">             <p class="play"></p>             <p class="pause"></p>             <p class="loading"></p>             <p class="error"></p>           </div>           <div class="scrubber">             <div class="progress" style="width: 1.50639px;"></div>             <div class="loaded" style="width: 265.651px;"></div>           </div>           <div class="time">             <em class="played">00:01</em>/<strong class="duration">04:33</strong>           </div>           <div class="error-message"></div></div>');
+          var frameOl = frame.append("<ol class='ols'></ol>");
+          for(var i=0;i<response.songs.length;i++)
+          {
+            $(".ols").append('<li><a href="#" data-src="'+response.songs[i].songPath+'">'+response.songs[i].name+'</a></li>')
+          }
+        },
+        complete:function()
+        {
+          $(".artist_details_body").animate({scrollTop:0},{queue:false});
+
+          $(".artist_details_body").perfectScrollbar();
+
+            $(".artist_detail_songs").css("display","block");
+            setTimeout(function(){
+                 $(".artist_detail_songs").css({"opacity":"1","margin-right":"0"});
+               }, 100);
+               // Setup the player to autoplay the next track
+           var a = audiojs.createAll({
+             trackEnded: function() {
+               var next = $('ol li.playing').next();
+               if (!next.length) next = $('ol li').first();
+               next.addClass('playing').siblings().removeClass('playing');
+               audio.load($('a', next).attr('data-src'));
+               audio.play();
+             }
+           });
+
+           // Load in the first track
+           var audio = a[0];
+               first = $('ol a').attr('data-src');
+           $('ol li').first().addClass('playing');
+           audio.load(first);
+
+           // Load in a track on click
+           $('ol li').click(function(e) {
+             console.log('s');
+             e.preventDefault();
+             $(this).addClass('playing').siblings().removeClass('playing');
+             audio.load($('a', this).attr('data-src'));
+             audio.play();
+           });
+
+        }
+    });
+    $("detials_events").on("click",function(e){
+      $(".bgOverlay").css("background","rgba(0,0,0,0)");
+    });
+
+
+  });
+
+
+  });
+    </script>

@@ -1,0 +1,231 @@
+
+
+<script src="/media/js/valid.js" type="text/javascript"></script>
+
+  <% layout('layout/layout') -%>
+  <div class="bodyBackground">
+
+  </div>
+    <section class="bodyContent">
+      <!-- -->
+      <form id="AlbumEditForm" method="post" action="/albums/edit"  class="forms" data-parsley-validate="">
+        <div class="form-group">
+          <label class="loginLabels" for="name">Artist name :</label>
+          <input id="artistListInput" type="text" class="artistName form-control" name="name" placeholder="Enter artist's name..." required="">
+          <div id="artistSelectionForm">
+            <div class="artistAjax"></div>
+          </div>
+        </div>
+        <div class="form-group">
+
+          <div id="albumSelectionForm">
+            <div class="albumAjax"></div>
+          </div>
+          <label class="loginLabels" for="albumName">Album's new name :</label>
+          <input id="albumName" type="text" class="albumName form-control" name="albumName" placeholder="Enter album's name...">
+
+        </div>
+        <div class="form-group">
+          <label class="loginLabels" for="description">Description :</label>
+          <input id="description" type="text" class="form-control" name="description" placeholder="Enter artist's description..." required="">
+        </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </section>
+
+  <script>
+      $(document).ready(function(){
+        $(".bodyBackground").css({"background":"url('/media/img/songAdd.jpg')","background-size": "100%"});
+
+        $("#artistListInput").on("change",getArtist);
+        function getArtist()
+        {
+          var that = $(this);
+          that.off("change");
+          var val = $("#artistListInput").val().toLowerCase();
+          $.ajax({
+            url: '/albums/add/artist',
+            contentType : 'application/json',
+            method : 'post',
+            data : JSON.stringify({name:val}),
+            success:function(response)
+            {
+              var tbodyEl = $('.artistAjax');
+              tbodyEl.html('');
+              $(".artistName").siblings($(".parsley-errors-list").remove());
+              if(response.artists.length > 0)
+              {
+                for(var i=0;i<response.artists.length;i++)
+                {
+                  if(val != response.artists[i].name )
+                  {
+                    $(".artistName").after('<ul class="parsley-errors-list filled"><li class="parsley-required">Artist not found.</li></ul>');
+                    break;
+                  }
+                }
+                response.artists.forEach(function(artist){
+                tbodyEl.append('\
+                  <div class="artistRow">\
+                  <label class="artistLabel" for='+artist.name+'>'+artist.name+'</label><input artistId="'+artist.name+'"  class="artistRadioBtns" id="'+artist.name+'" type="radio" name="artistListRadio" value="'+artist.name+'">\
+                  </div>\
+                  ');
+                });
+                $(".artistAjax").show({duration:'400ms',queue:false});
+
+              }
+              else{
+                $(".artistName").after('<ul class="parsley-errors-list filled"><li class="parsley-required">Artist not found.</li></ul>');
+              }
+            }
+          }).always(function(){that.on('change',getArtist)});
+          $("#artistSelectionForm").on('click','.artistRadioBtns',function(){
+               $('.artistRadioBtns').on('change',function(){
+                 $(".artistName").siblings($(".parsley-errors-list").remove());
+                 var newClick = $("#artistSelectionForm input[name=artistListRadio]:checked").val();
+                 $("#artistListInput").val(newClick);
+                 var artist = {name:newClick};
+                 $.ajax({
+                   url:'/albums/add/submit',
+                   method:'post',
+                   contentType : 'application/json',
+                   data:JSON.stringify(artist),
+                   success : function(response)
+                   {
+                     var tbodyEl = $('.albumAjax');
+                     tbodyEl.html('');
+                     $("#albumName").siblings($(".parsley-errors-list").remove());
+                      tbodyEl.append('<label style="    float: left;width: 100%;font-size: 39px;margin-left: -15px;" class="loginLabels">Select Album :</label>');
+                     response.artist.albums.forEach(function(album){
+                       tbodyEl.append('\
+                         <div class="artistRow">\
+                         <label class="artistLabel" for='+album.name+'>'+album.name+'</label><input class="albumIdChecked" type="hidden" value="'+album._id+'" /><input artistId="'+album.name+'"  class="albumRadioBtns" id="'+album.name+'" type="radio" name="albumListRadio" value="'+album.name+'">\
+                         </div>\
+                         ');
+                       });
+                       $(".albumAjax").show({duration:'400ms',queue:false});
+                   },
+                 });
+               });
+            });
+          $("#albumSelectionForm").on('click','.albumRadioBtns',function(){
+                 $('.albumRadioBtns').on('change',function(){
+                   $(".artistName").siblings($(".parsley-errors-list").remove());
+                   var newClick = $("#albumSelectionForm input[name=albumListRadio]:checked").siblings(".albumIdChecked").val();
+                   $.ajax({
+                     url: '/albums/getAlbum',
+                     contentType : 'application/json',
+                     method : 'post',
+                     data : JSON.stringify({name:newClick}),
+                     success:function(response){
+                       var desc = response.album.description;
+                       $("#description").val(desc);
+                     }
+                   });
+                 });
+              });
+        }
+        $("#albumName").on("change",validateAjax);
+        function validateAjax()
+        {
+          var $this = $(this);
+          $this.off('change');
+          $(".artistName").find($(".parsley-errors-list").remove());
+          var aName = $(".artistName").val();
+          var albumName = $("#albumName").val();
+          aName = aName.toLowerCase();
+          albumName = albumName.toLowerCase();
+          var artist = {name:aName,albumName:albumName};
+          $.ajax({
+            url:'/albums/add/submit',
+            method:'post',
+            contentType : 'application/json',
+            data:JSON.stringify(artist),
+            success:function(response)
+            {
+
+            }
+          }).always(function(){$this.on('change',validateAjax);});
+        };
+        $("#AlbumEditForm").on("submit",function(e){
+          $(".artistName").find($(".parsley-errors-list").remove());
+          var form = $(this);
+          e.preventDefault();
+          var aName = $("#artistSelectionForm input[name=artistListRadio]:checked").val();
+          var oldAlbumName = $("#albumSelectionForm input[name=albumListRadio]:checked").siblings(".albumIdChecked").val();
+          var albumName = $("#albumName").val();
+          var description = $("#description").val();
+          if(aName)
+          {
+            aName = aName.toLowerCase();
+          }
+          if(oldAlbumName)
+          {
+              oldAlbumName = oldAlbumName.toLowerCase();
+          }
+          var artist = {name:aName,id:oldAlbumName,newname:albumName,description:description};
+          $.ajax({
+            url:'/albums/add/submit',
+            method:'post',
+            contentType : 'application/json',
+            data:JSON.stringify(artist),
+            success:function(response)
+            {
+              var artistId = response.artist._id;
+              if(response.artist != null)
+              {
+                var valid = false;
+                for(var i =0;i<response.artist.albums.length;i++)
+                {
+                  if(oldAlbumName == response.artist.albums[i]._id)
+                  {
+                    $("#albumName").siblings($(".parsley-errors-list").remove());
+                    valid = true;
+                    break;
+                  }
+                }
+                if(valid)
+                {
+                  $("#albumName").siblings($(".parsley-errors-list").remove());
+                  $.ajax({
+                    url:'edit',
+                    method:'post',
+                    contentType : 'application/json',
+                    data:JSON.stringify(artist),
+                    success :function(response)
+                    {
+
+                      $("#AlbumEditForm").animate({opacity:0},{duration:400,queue:false,complete:function(){
+                        $("#AlbumEditForm").remove();
+                        $(".bodyContent").append(' \
+                        <form id="AlbumEditFormImage" method="post" action="/albums/edit/images"  class="forms" enctype="multipart/form-data" data-parsley-validate="">\
+                        <input type="hidden" name="id" value="'+response.album._id+'" />\
+                        <input type="hidden" name="artistId" value="'+artistId+'" />\
+                        <input type="hidden" name="name" value="'+response.album.artist+'" />\
+                                <div class="form-group">\
+                                  <label class="loginLabels" for="coverArt">Cover Art :</label>\
+                                  <input id="coverArt" type="file" class="fileUp form-control" name="coverArt">\
+                                </div>\
+                                <div class="form-group">\
+                                  <label class="loginLabels" for="songs">Songs :</label>\
+                                  <input id="songs" type="file" class="fileUp form-control" name="songs" multiple="">\
+                                </div>\
+                                  <button type="submit" class="btn btn-default">Submit</button>\
+                              </form>\
+                      ')
+                      }});
+                    }
+                  });
+                }
+                else{
+                  $("#albumName").after('<ul class="parsley-errors-list filled"><li class="parsley-required">Select album</li></ul>');
+                }
+              }
+              else{
+                $("#albumName").after('<ul class="parsley-errors-list filled"><li class="parsley-required">Select artist and album</li></ul>');
+              }
+            }
+          });
+        });
+
+      });
+    </script>

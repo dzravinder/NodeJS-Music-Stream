@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX API Tutorial</title>
+      <script src="media/js/jquery.js" type="text/javascript"></script>
+      <script>
+      $(document).ready(function(){
+        //GET READ
+        $("#get-button").on('click',function(){
+          $.ajax({
+            url: 'ajax/products',
+            contentType : 'application/json',
+            success : function(response){
+              console.log(response);
+            }
+          });
+        });
+      });
+      </script>
+</head>
+<body>
+    <h1>AJAX API Tutorial</h1>
+    <button id="get-button">READ/GET Products</button>
+    <form id="create-form">
+        <input type="text" id="create-input">
+        <button>Create/POST</button>
+    </form>
+    <hr>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+</body>
+</html>
